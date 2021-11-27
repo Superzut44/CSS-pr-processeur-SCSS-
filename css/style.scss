@@ -1,0 +1,149 @@
+@font-face {
+font-family: "Aniron";
+font-style: normal;
+font-weight: normal;
+src: local("Aniron"), url("aniron-cufonfonts-webfont/anirm___.woff") format("woff");
+}
+@font-face {
+    font-family: 'Aniron Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Aniron Bold'), url('aniron-cufonfonts-webfont/anirb___.woff') format('woff');
+    }
+
+$color-nav-bar-text: #faead9;
+$color-nav-bar-background: #ff5400;
+$color-text: #343434;
+$color-ring-orange:#ff6600;
+$color-ring-gold: #f8d800;
+$color-ring-grey:#343434;
+
+@mixin nav-bar-background {
+    background-color: $color-nav-bar-background;
+}
+
+@mixin heading-shadow($colour:$color-ring-orange, $size: 6px){
+    text-shadow: $size $size darken($colour, 10%);
+}
+
+body {
+font-family: "Aniron", serif;
+}
+
+.left-nav-bar {
+    a {
+        display: flex;
+        align-items: center;
+    }
+    .ring {
+        --size: 1.5em;
+        background-image: url("../image/kisspng-the-lord-of-the-rings-the-fellowship-of-the-ring-s-lord-of-the-rings-5ac71cec5545f0.7840222515229985083493.png");
+        background-size: var(--size);
+        background-position-y: center;
+        background-repeat: no-repeat;
+        display: inline-block;
+        width: 0;
+        overflow: hidden;
+        padding-left: var(--size);
+        margin: calc(var(--size) / 10);
+    }
+}
+
+.ring-nav-bar {
+    height: 5rem;
+    @include nav-bar-background;
+    color: $color-nav-bar-text;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.ring-in-the-nav-bar {
+@include nav-bar-background;
+width: 4vh;
+}
+
+.left-nav-bar {
+    font-size: 2rem;
+    padding-left: 1rem;
+}
+
+.right-nav-bar {
+font-size: 1.3rem;
+> a {
+    padding-right: 1rem;
+    &:first-child {
+    text-decoration: underline 5px;
+    }
+}
+}
+
+@mixin ring {
+    width: 100px;
+    height: 100px;
+    border: 5px solid;
+    border-radius: 50%;
+    margin: 30px;
+}
+
+.ring-orange {
+    @include ring;
+    width: 50px;
+    height: 50px;
+    border: 10px solid $color-ring-orange;
+    @include heading-shadow;
+    
+}
+
+.ring-gold {
+    @include ring;
+    width: 250px;
+    height: 250px;
+    border: 20px solid $color-ring-gold;
+}
+
+@for $i from 0 through 6 {
+    .ring-black-#{$i} {
+        width: 30px*$i;
+        height: 30px*$i;
+        border: 1px*$i solid $color-ring-grey;
+        border-radius: 15px*$i;
+        margin-left: -5px*$i;
+    }
+}
+footer {
+    font-size: 1.3rem;
+    height: 15rem;
+    @include nav-bar-background;
+    color: $color-nav-bar-text;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5rem;
+    padding: 0 5rem;
+}
+
+.left-footer,
+.center-footer,
+.first-right-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.right-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+}
+
+@mixin heading-shadow($colour:$colour-primary, $size: $heading-shadow-size){
+    text-shadow: $size $size darken($colour, 10%);
+}
+
+.form__heading {
+    text-shadow: 0.55rem 0.55rem #11af82;
+    }
